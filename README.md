@@ -16,7 +16,7 @@ O objetivo é evitar a necessidade de digitar a senha manualmente no `initramfs`
 
 Verifique se já possui:
 ```bash
-sudo dpkg -l cryptsetup initramfs-tools
+sudo dpkg -l cryptsetup initramfs-tools util-linux
 ```
 
 Para instalar utilize:
