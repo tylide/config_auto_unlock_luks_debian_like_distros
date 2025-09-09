@@ -1,6 +1,6 @@
 # 🔐 Configuração Automática de Desbloqueio LUKS no Boot
 
-Este projeto contém um script em **Bash** que configura o desbloqueio automático de partições/discos **LUKS** no Debian/Ubuntu durante o boot, utilizando **keyfiles armazenados de forma segura no initramfs**.  
+Este projeto contém um script em **Bash** que configura o desbloqueio automático de partições/discos **LUKS** no Debian/Ubuntu durante o boot, utilizando **keyfiles armazenados de forma ⚠️\* insegura no initramfs**.  
 
 O objetivo é evitar a necessidade de digitar a senha manualmente no `initramfs` a cada inicialização.
 
@@ -64,9 +64,9 @@ sudo reboot
 ```
   - Se tudo estiver correto, o desbloqueio será feito de forma automática no boot 🚀
 
-## ⚠️ Notas de segurança
+## \*⚠️ Notas de segurança
 
-O keyfile é protegido com permissões restritas (chmod 600 e pasta com chmod 700).
+O keyfile é protegido com permissões restritas (chmod 600 e pasta com chmod 700), entretanto se alguém tiver acesso ao físico ao seu disco pode conseguir extrair a chave do arquivo initrd.img na partição de boot do sistema.
 
 Nunca copie este arquivo para locais acessíveis a usuários comuns.
 
