@@ -36,33 +36,33 @@ sudo ./config_auto_unlock_luks.sh
 ```
 
 2. Escolha as partições/discos LUKS
-O script lista todos os dispositivos criptografados detectados no sistema com informações de:
+  - O script lista todos os dispositivos criptografados detectados no sistema com informações de:
 
-Dispositivo base (/dev/sdXN, /dev/md0, etc.)
+  - Dispositivo base (/dev/sdXN, /dev/md0, etc.)
 
-Mapper (/dev/mapper/...)
+  - Mapper (/dev/mapper/...)
 
-Pontos de montagem associados
+  - Pontos de montagem associados
 
-Você pode selecionar um ou mais índices (ex.: 0 2).
+  - Você pode selecionar um ou mais índices (ex.: 0 2).
 
 3. O script fará automaticamente:
 
-Criar (ou reutilizar) um keyfile seguro em /etc/keys/luks.key
+  - Criar (ou reutilizar) um keyfile seguro em /etc/keys/luks.key
 
-Adicionar a chave ao cabeçalho LUKS (pede senha atual uma vez)
+  - Adicionar a chave ao cabeçalho LUKS (pede senha atual uma vez)
 
-Atualizar o /etc/crypttab
+  - Atualizar o /etc/crypttab
 
-Ajustar /etc/cryptsetup-initramfs/conf-hook e initramfs.conf
+  - Ajustar /etc/cryptsetup-initramfs/conf-hook e initramfs.conf
 
-Regenerar o initramfs (update-initramfs -u)
+  - Regenerar o initramfs (update-initramfs -u)
 
 4. Reinicie o sistema para validar:
 ```bash
 sudo reboot
 ```
-Se tudo estiver correto, o desbloqueio será feito de forma automática no boot 🚀
+  - Se tudo estiver correto, o desbloqueio será feito de forma automática no boot 🚀
 
 ## ⚠️ Notas de segurança
 
@@ -71,5 +71,6 @@ O keyfile é protegido com permissões restritas (chmod 600 e pasta com chmod 70
 Nunca copie este arquivo para locais acessíveis a usuários comuns.
 
 Se não quiser mais o desbloqueio automático, basta remover a entrada correspondente no /etc/crypttab e atualizar o initramfs:
-
-sudo update-initramfs -u
+```bash
+  sudo update-initramfs -u
+```
