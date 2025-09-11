@@ -70,7 +70,7 @@ ensure_keyfile() {
 ensure_initramfs_settings() {
   mkdir -p "$(dirname "$CONF_HOOK")"
   grep -q '^KEYFILE_PATTERN=' "$CONF_HOOK" 2>/dev/null || echo 'KEYFILE_PATTERN="/etc/keys/*.key"' >> "$CONF_HOOK"
-  grep -q '^ASKPASS=n' "$CONF_HOOK" 2>/dev/null || echo 'ASKPASS=n"' >> "$CONF_HOOK"
+  grep -q '^ASKPASS=n' "$CONF_HOOK" 2>/dev/null || echo 'ASKPASS=n' >> "$CONF_HOOK"
 
 
   if grep -q '^UMASK=' "$CONF_INIT" 2>/dev/null; then
@@ -86,7 +86,7 @@ ensure_crypttab_entry() {
   local dev="$1"
   local uuid name
   uuid=$(blkid -s UUID -o value "$dev")
-  name="crypt$(basename "$dev")"
+  name="$(basename "$dev")_crypt"
 
   if grep -q "UUID=$uuid" /etc/crypttab 2>/dev/null; then
     # Atualiza só a coluna da chave (3ª)
